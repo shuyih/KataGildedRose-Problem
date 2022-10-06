@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\ApprovalTests.5.7.3\build\ApprovalTests.props" Condition="Exists('..\packages\ApprovalTests.5.7.3\build\ApprovalTests.props')" />
+  <Import Project="..\packages\NUnit.3.13.3\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.13.3\build\NUnit.props')" />
+  <PropertyGroup>
+    <ProjectGuid>{1FC61F48-F3B1-4CDC-AFA0-D142FD9D1507}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <RootNamespace>GildedRose</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Latest\</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Latest\</OutputPath>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.3.13.3\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="EmptyFiles">
+      <HintPath>..\packages\EmptyFiles.2.8.0\lib\net461\EmptyFiles.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CodeDom">
+      <HintPath>..\packages\System.CodeDom.6.0.0\lib\net461\System.CodeDom.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SqlClient">
+      <HintPath>..\packages\System.Data.SqlClient.4.8.3\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Management" />
+    <Reference Include="ApprovalUtilities">
+      <HintPath>..\packages\ApprovalUtilities.5.7.3\lib\net461\ApprovalUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="DiffEngine">
+      <HintPath>..\packages\DiffEngine.9.0.6\lib\net461\DiffEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Security.AccessControl">
+      <HintPath>..\packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Registry">
+      <HintPath>..\packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.6.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="TextCopy">
+      <HintPath>..\packages\TextCopy.6.1.0\lib\net461\TextCopy.dll</HintPath>
+    </Reference>
+    <Reference Include="ApprovalTests">
+      <HintPath>..\packages\ApprovalTests.5.7.3\lib\net461\ApprovalTests.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApprovalTest.cs" />
+    <Compile Include="GildedRoseTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GildedRose.csproj">
+      <Project>{176C0214-9136-4079-8DAB-11D7420C3881}</Project>
+      <Name>GildedRose</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\EmptyFiles.2.8.0\build\EmptyFiles.targets" Condition="Exists('..\packages\EmptyFiles.2.8.0\build\EmptyFiles.targets')" />
+  <Import Project="..\packages\ApprovalTests.5.7.3\build\ApprovalTests.targets" Condition="Exists('..\packages\ApprovalTests.5.7.3\build\ApprovalTests.targets')" />
+</Project>
