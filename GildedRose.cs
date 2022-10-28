@@ -31,24 +31,21 @@ namespace GildedRose
                     }
                 }
 
-                if (Items[i].SellIn < 0 && Items[i].Name != "Aged Brie")
+                if (Items[i].SellIn >= 0 || Items[i].Name == "Aged Brie")
                 {
-                    if (Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
+                    if (Items[i].SellIn < 0)
                     {
-                        if (Items[i].Quality > 0)
-                            if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                            {
-                                DecreaseQuality(i);
-                            }
-                    }
-                    else
-                    {
-                        Items[i].Quality = Items[i].Quality - Items[i].Quality;
+                        if (Items[i].Quality < 50) IncreaseQuality(i);
                     }
                 }
-                else if (Items[i].SellIn < 0)
+                else
                 {
-                    if (Items[i].Quality < 50) IncreaseQuality(i);
+                    if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert") continue;
+                    if (Items[i].Quality <= 0) continue;
+                    if (IsDefaultItems(i))
+                    {
+                        DecreaseQuality(i);
+                    }
                 }
             }
         }
@@ -100,10 +97,17 @@ namespace GildedRose
                             break;
                     }
 
+                    
+
                     break;
                 }
             }
             DecreaseSellIn(i);
+
+            if (Items[i].SellIn < 0)
+            {
+                Items[i].Quality = 0;
+            }
         }
 
         private void IncreaseQuality(int i)
