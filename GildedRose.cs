@@ -30,22 +30,6 @@ namespace GildedRose
                         BackstagePassesRules(i);
                     }
                 }
-
-                if (Items[i].SellIn >= 0 || Items[i].Name == "Aged Brie")
-                {
-                    if (Items[i].SellIn < 0)
-                    {
-                        if (Items[i].Quality < 50) IncreaseQuality(i);
-                    }
-                }
-                else
-                {
-                    if (Items[i].Quality <= 0) continue;
-                    if (IsDefaultItems(i))
-                    {
-                        DecreaseQuality(i);
-                    }
-                }
             }
         }
 
@@ -54,12 +38,25 @@ namespace GildedRose
             if (Items[i].Quality > 0)
                 DecreaseQuality(i);
             DecreaseSellIn(i);
+
+            if (Items[i].SellIn < 0)
+            {
+                if (Items[i].Quality > 0)
+                {
+                    DecreaseQuality(i);
+                }
+            }
         }
 
         private void AgedBrieRules(int i)
         {
             if (Items[i].Quality < 50) IncreaseQuality(i);
             DecreaseSellIn(i);
+
+            if (Items[i].SellIn < 0)
+            {
+                if (Items[i].Quality < 50) IncreaseQuality(i);
+            }
         }
         
         private bool IsDefaultItems(int i)
