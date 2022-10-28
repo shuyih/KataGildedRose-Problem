@@ -14,14 +14,15 @@ namespace GildedRose
         {
             for (var i = 0; i < Items.Count; i++)
             {
-                if (IsDefaultItems(i)) //default products with default rule of decrease quality by 1
+                if (IsDefaultItems(i))
                 {
                     DefaultItemRules(i);
                 }
 
                 if (Items[i].Name == "Aged Brie")
                 {
-                    AgedBrieRules(i);
+                    var agedBrie = new AgedBrie();
+                    agedBrie.UpdateItem(Items[i]);
                 }
 
                 if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
@@ -46,17 +47,6 @@ namespace GildedRose
             }
         }
 
-        private void AgedBrieRules(int i)
-        {
-            if (Items[i].Quality < 50) IncreaseQuality(i);
-            DecreaseSellIn(i);
-
-            if (Items[i].SellIn < 0)
-            {
-                if (Items[i].Quality < 50) IncreaseQuality(i);
-            }
-        }
-        
         private bool IsDefaultItems(int i)
         {
             return Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert" && Items[i].Name != "Sulfuras, Hand of Ragnaros";
