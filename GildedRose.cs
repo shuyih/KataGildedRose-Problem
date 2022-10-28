@@ -40,7 +40,6 @@ namespace GildedRose
                 }
                 else
                 {
-                    if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert") continue;
                     if (Items[i].Quality <= 0) continue;
                     if (IsDefaultItems(i))
                     {
